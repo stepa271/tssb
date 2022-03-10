@@ -1,8 +1,23 @@
 package com.tssb.config;
 
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+
 public class MySpringMvcDispatcherSerlvetIntitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+    @Override
+    public void onStartup(ServletContext aServletContext) throws ServletException{
+        super.onStartup(aServletContext);
+        registerHiddenFielFilter(aServletContext);
+    }
+
+    private void registerHiddenFielFilter(ServletContext aContext) {
+        aContext.addFilter("hiddenHttpMethodFilter",
+                new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null, true, "/*");
+    }
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return null;
