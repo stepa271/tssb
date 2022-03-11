@@ -1,4 +1,4 @@
-package com.tssb.dao;
+package com.tssb.dao.mapper;
 
 import com.tssb.models.Person;
 import org.springframework.jdbc.core.RowMapper;
