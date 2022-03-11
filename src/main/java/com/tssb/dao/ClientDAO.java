@@ -2,7 +2,6 @@ package com.tssb.dao;
 
 import com.tssb.models.Client;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -29,13 +28,13 @@ public class ClientDAO {
     }
     public void save(Client client){
         jdbcTemplate.update("INSERT INTO Client VALUES(1,?,?,?)",
-                client.getName(),client.getSurname(),client.getBirthday());
+                client.getName(),client.getSurname(),client.getBirthdate());
     }
 
     public void update(int id, Client updateClient){
         jdbcTemplate.update("UPDATE Client SET name=?,surname=?,birthdate=? WHERE id=?",
                 updateClient.getName(),updateClient.getSurname(),
-                updateClient.getBirthday(), id);    }
+                updateClient.getBirthdate(), id);    }
 
 
     public void delete(int id){

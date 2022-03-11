@@ -1,7 +1,5 @@
 package com.tssb.dao;
 
-import com.tssb.models.Client;
-import com.tssb.models.Station;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

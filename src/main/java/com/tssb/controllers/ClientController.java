@@ -1,9 +1,8 @@
 package com.tssb.controllers;
 
+
 import com.tssb.dao.ClientDAO;
-import com.tssb.dao.PersonDAO;
 import com.tssb.models.Client;
-import com.tssb.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,11 +26,13 @@ public class ClientController {
         model.addAttribute("clients", clientDAO.index());
         return "clients/index";
     }
+
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("client", clientDAO.show(id));
         return "clients/show";
     }
+
     @GetMapping("/new")
     public String newPerson(@ModelAttribute("client") Client client) {
         return "clients/new";
@@ -40,7 +41,7 @@ public class ClientController {
     @PostMapping()
     public String create(@ModelAttribute("client") @Valid Client client,
                          BindingResult bindingResult) {
-        if(bindingResult.hasErrors())
+        if (bindingResult.hasErrors())
             return "clients/new";
 
         clientDAO.save(client);
@@ -56,9 +57,9 @@ public class ClientController {
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("client")
                          @Valid Client client,
-                         @PathVariable("id") int id ,
+                         @PathVariable("id") int id,
                          BindingResult bindingResult) {
-        if(bindingResult.hasErrors())
+        if (bindingResult.hasErrors())
             return "clients/edit";
         clientDAO.update(id, client);
         return "redirect:/clients";
