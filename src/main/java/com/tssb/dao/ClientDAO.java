@@ -33,7 +33,7 @@ public class ClientDAO {
     }
 
     public void update(int id, Client updateClient){
-        jdbcTemplate.update("UPDATE Client SET name=?,surname=?,birthdate=? Where id=?",
+        jdbcTemplate.update("UPDATE Client SET name=?,surname=?,birthdate=? WHERE id=?",
                 updateClient.getName(),updateClient.getSurname(),
                 updateClient.getBirthday(), id);    }
 
