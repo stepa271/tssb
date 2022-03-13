@@ -13,11 +13,11 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/clients")
-public class ClientController {
+public class ClientsController {
     private final ClientDAO clientDAO;
 
     @Autowired
-    public ClientController(ClientDAO clientDAO) {
+    public ClientsController(ClientDAO clientDAO) {
         this.clientDAO = clientDAO;
     }
 

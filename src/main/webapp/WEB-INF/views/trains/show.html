@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<p th:text="${train.getTrainNumber() + ', ' + train.getTrainNumber()}">VALUE</p>
+<p th:text="${'Capacity: ' + train.getCapacity()}">VALUE</p>
+<p th:text="${train.getTrainNumber() }">VALUE</p>
+
+<a th:href="@{/trains/{trainNumber}/edit(trainNumber=${train.getTrainNumber()})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/trains/{trainNumber}(trainNumber=${train.getTrainNumber()})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>
