@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/trains")
 public class TrainsController {
     private TrainDAO trainDAO;
 
@@ -28,8 +29,8 @@ public class TrainsController {
         return "trains/index";
     }
 
-    @GetMapping("/{trainNumber}")
-    public String show(@PathVariable("trainNumber") int trainNumber, Model model) {
+    @GetMapping("/{id}")
+    public String show(@PathVariable("id") int trainNumber, Model model) {
         model.addAttribute("train", trainDAO.show(trainNumber));
         return "trains/show";
     }
@@ -49,16 +50,16 @@ public class TrainsController {
         return "redirect:/trains";
     }
 
-    @GetMapping("/{trainNumber}/edit")
-    public String edit(Model model, @PathVariable("trainNumber") int id) {
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable("id") int id) {
         model.addAttribute("train", trainDAO.show(id));
         return "trains/edit";
     }
 
-    @PatchMapping("/{trainNumber}")
+    @PatchMapping("/{id}")
     public String update(@ModelAttribute("train")
                          @Valid Train train,
-                         @PathVariable("trainNumber") int id,
+                         @PathVariable("id") int id,
                          BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "trains/edit";
@@ -66,8 +67,8 @@ public class TrainsController {
         return "redirect:/trains";
     }
 
-    @DeleteMapping("/{trainNumber}")
-    public String delete(@PathVariable("trainNumber") int id) {
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id) {
         trainDAO.delete(id);
         return "redirect:/trains";
     }
