@@ -2,10 +2,9 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>All people</title>
+    <title>All Trains</title>
 </head>
 <body>
-
 
 <div th:each="train : ${trains}">
     <a th:href="@{/trains/{trainNumber}(trainNumber=${train.getTrainNumber()})}"
@@ -13,10 +12,27 @@
        ', ' + train.getCapacity()}">user</a>
 </div>
 
-<br/>
-<hr/>
 
 
+<table>
+    <tr>
+        <th>Number</th>
+        <th>Train Number</th>
+        <th>Capacity</th>
+        <th>Action</th>
+
+    </tr>
+    <div th:each="train : ${trains}">
+    <tr >
+        <td th:text="i++">#</td>
+        <td> <a th:text="${train.getTrainNumber()}"> TrainNumber</a></td>
+        <td> <a th:text="${train.getCapacity()}">Capacity </a></td>
+        <td>
+            <a th:href="@{/trains/{id}/edit(id=${train.getTrainNumber()})}">Edit</a>
+            <a th:href="@{/trains/{trainNumber}(trainNumber=${train.getTrainNumber()})}">Explore</a>
+        </td>
+    </tr> </div>
+</table>
 
 </body>
 </html>
