@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update person</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/trains/{trainNumber}(trainNumber=${train.getTrainNumber()})}" th:object="${train}">
+    <label for="trainNumber">Train Number: </label>
+    <input type="text" th:field="*{trainNumber}" id="trainNumber"/>
+    <div style="color: red " th:if="${#fields.hasErrors('trainNumber')}"
+         th:errors="*{trainNumber}"> Train Number ERROR</div>
+    <br/>
+    <label for="capacity">Enter capacity: </label>
+    <input type="text" th:field="*{capacity}" id="capacity"/>
+    <div style="color: red " th:if="${#fields.hasErrors('capacity')}"
+         th:errors="*{capacity}"> Capacity ERROR</div>
+    <br/>
+    <input type="submit" value="Update!"/>
+</form>
+
+</body>
+</html>

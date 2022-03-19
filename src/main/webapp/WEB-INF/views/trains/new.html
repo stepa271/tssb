@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/trains}" th:object="${train}">
+    <label for="id">Enter number train: </label>
+    <input type="text" th:field="*{id}" id="id"/>
+    <div style="color: red " th:if="${#fields.hasErrors('id')}" th:errors="*{id}"> TrainNumber ERROR</div>
+    <br/>
+    <label for="capasity">Enter capasity: </label>
+    <input type="text" th:field="*{capasity}" id="capasity"/>
+    <div style="color: red " th:if="${#fields.hasErrors('capasity')}" th:errors="*{capasity}"> Capasity ERROR</div>
+    <br/>
+        <input type="submit" value="Create!"/>
+</form>
+</body>
+</html>

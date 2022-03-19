@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Trains</title>
+</head>
+<body>
+
+
+<div th:each="train : ${trains}">
+    <a th:href="@{/trains/{id}(id=${train.getId()})}"
+       th:text="${train.getId() + ', ' +
+        train.getCapacity()}">train</a>
+</div>
+</body>
+</html>
