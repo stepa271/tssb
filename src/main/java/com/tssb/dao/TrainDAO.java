@@ -26,23 +26,23 @@ public class TrainDAO {
     public Train show(int id) {
 
         return jdbcTemplate.query
-                        ("SELECT * FROM Train WHERE id=?",
+                        ("SELECT * FROM train WHERE NUMTRAIN=?",
                                 new Object[]{id},
                                 new BeanPropertyRowMapper<>(Train.class)).
                 stream().findAny().orElse(null);
     }
 
     public void save(Train train) {
-        jdbcTemplate.update("INSERT INTO Train VALUES(1,?)",
-                train.getCapacity());
+        jdbcTemplate.update("INSERT INTO train VALUES(?,?)",
+               train.getId(), train.getCapacity());
     }
 
-    public void update(int id, Train updatedTrain) {
-        jdbcTemplate.update("UPDATE Train SET capacity=? Where id=?",
-                updatedTrain.getCapacity(), id);
+    public void update(int train_num, Train updatedTrain) {
+        jdbcTemplate.update("UPDATE Train SET capacity=? Where NUMTRAIN=?",
+                updatedTrain.getCapacity(), train_num);
     }
     public void delete(int id) {
-        jdbcTemplate.update("DELETE FROM Train WHERE id=?", id);
+        jdbcTemplate.update("DELETE FROM train WHERE NUMTRAIN=?", id);
     }
 }
 

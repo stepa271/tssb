@@ -6,9 +6,9 @@
 </head>
 <body>
 <form th:method="POST" th:action="@{/trains}" th:object="${train}">
-    <label for="trainNumber">Enter train: </label>
-    <input type="text" th:field="*{trainNumber}" id="trainNumber"/>
-    <div style="color: red " th:if="${#fields.hasErrors('trainNumber')}" th:errors="*{trainNumber}"> TrainNumber ERROR</div>
+    <label for="id">Enter number train: </label>
+    <input type="text" th:field="*{id}" id="id"/>
+    <div style="color: red " th:if="${#fields.hasErrors('id')}" th:errors="*{id}"> TrainNumber ERROR</div>
     <br/>
     <label for="capasity">Enter capasity: </label>
     <input type="text" th:field="*{capasity}" id="capasity"/>

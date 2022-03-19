@@ -22,7 +22,6 @@ public class TrainsController {
         this.trainDAO = trainDAO;
     }
 
-
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("trains", trainDAO.index());
@@ -30,8 +29,8 @@ public class TrainsController {
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") int trainNumber, Model model) {
-        model.addAttribute("train", trainDAO.show(trainNumber));
+    public String show(@PathVariable("id") int id, Model model) {
+        model.addAttribute("train", trainDAO.show(id));
         return "trains/show";
     }
 

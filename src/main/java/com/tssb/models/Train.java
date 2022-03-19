@@ -1,22 +1,26 @@
 package com.tssb.models;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Train {
-    private int trainNumber;
+
+    @NotEmpty(message = "Name should not be empty")
+    private int id;
     private int capacity;
 
     public Train() {    }
 
-    public Train(int trainNumber, int capacity) {
-        this.trainNumber = trainNumber;
+    public Train(int id, int capacity) {
+        this.id = id;
         this.capacity = capacity;
     }
 
-    public int getTrainNumber() {
-        return trainNumber;
+    public int getId() {
+        return id;
     }
 
-    public void setTrainNumber(int trainNumber) {
-        this.trainNumber = trainNumber;
+    public void setId(int trainNumber) {
+        this.id = trainNumber;
     }
 
     public int getCapacity() {
